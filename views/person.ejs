@@ -1,0 +1,41 @@
+<div class="container mt-0">
+    
+    <form action="/person/view" method="get" class="d-flex mb-3" style="max-width: 240px;">
+        <input type="text" name="search" 
+            class="form-control me-2 py-2" 
+            placeholder="Search" 
+            style="font-size: 0.85rem;">
+        <button type="submit" 
+                class="btn btn-outline-success px-3" 
+                style="font-size: 0.85rem; white-space: nowrap;">Search</button>
+    </form>
+
+    <table class="table table-bordered text-center align-middle">
+        <thead style="background-color: #6181b8;">
+            <tr style="font-weight: bold;">
+                <th>ID</th><th>PW</th><th>이름</th><th>성별</th><th>주소</th><th>전화번호</th><th>생일</th><th>클래스</th><th colspan="2">메뉴</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% results.forEach(p => { %>
+            <tr>
+                <td><%= p.loginid %></td>
+                <td><%= p.password %></td>
+                <td><%= p.name %></td>
+                <td><%= p.mf === 'M' ? '남자' : '여자' %></td>
+                <td><%= p.address %></td>
+                <td><%= p.tel %></td>
+                <td><%= p.birth %></td>
+                <td><%= p.class %></td>
+                <td><a href="/person/update/<%= p.loginid %>" class="text-primary">수정</a></td>
+                <td><a href="/person/delete/<%= p.loginid %>" class="text-danger" onclick="return confirm('삭제하시겠습니까?')">삭제</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <a href="/person/create" class="btn btn-outline-secondary btn-sm">고객 추가</a>
+    </div>
+    
+</div>

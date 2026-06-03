@@ -1,0 +1,25 @@
+<div class="container" style="margin-top: 20px;">
+    <h3 class="mb-4">데이터베이스 테이블 목록</h3>
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary text-center">
+            <tr>
+                <th style="width: 30%;">테이블 명</th>
+                <th style="width: 70%;">테이블 설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tables.forEach(function(table) { %>
+                <tr>
+                    <td class="text-center">
+                        <a href="/table/view/<%= table.table_name %>" class="text-primary text-decoration-none fw-bold">
+                            <%= table.table_name %>
+                        </a>
+                    </td>
+                    <td style="padding-left: 20px;">
+                        <%= table.table_comment || '설명이 없습니다.' %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

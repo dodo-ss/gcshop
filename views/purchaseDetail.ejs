@@ -1,0 +1,26 @@
+<table class="table table-bordered align-middle" style="margin: 20px auto; max-width: 800px;">
+    <form method="post">
+        <tr>
+            <td rowspan="5" style="width: 320px; text-align: center;">
+                <% if (product.image === 'no_image' || !product.image) { %>
+                    <div style="width:300px; height:300px; background-color:#eee; display:flex; align-items:center; justify-content:center;">No Image</div>
+                <% } else { %>
+                    <img src="<%= product.image %>" style="width:300px; height:300px; object-fit: contain;">
+                <% } %>
+            </td>
+            <td><h3><%= product.name %></h3></td>
+        </tr>
+        
+        <tr> <td><strong>가격 :</strong> <span class="text-danger"><%= product.price %> 원</span></td></tr>
+        <tr> <td><strong>브랜드 :</strong> <%= product.brand %></td></tr>
+        
+        <tr> <td><strong>수량 :</strong> <input type="number" name="qty" class="form-control d-inline-block" value="1" min="1" style="width: 100px;"> 개</td></tr>
+        <tr>
+            <td>
+                <button class="btn btn-outline-primary btn-sm" formaction="/purchase/create_process/<%= product.prod_id %>" type="submit">결제</button>
+                
+                <button class="btn btn-outline-primary btn-sm" formaction="/cart/add_process/<%= product.prod_id %>" type="submit" style="margin-left: 5px;">장바구니</button>
+            </td>
+        </tr>
+    </form>   
+</table>

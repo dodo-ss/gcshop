@@ -1,0 +1,30 @@
+<table class="table table-bordered align-middle" style="margin: 20px auto; max-width: 800px;">
+    <tr>
+        <td rowspan="5" style="width: 320px; text-align: center;">
+            <% if (product.image === 'no_image' || !product.image) { %>
+                <div style="width:300px; height:300px; background-color:#eee; display:flex; align-items:center; justify-content:center;">No Image</div>
+            <% } else { %>
+                <img src="<%= product.image %>" style="width:300px; height:300px; object-fit: contain;">
+            <% } %>
+        </td>
+        <td><h3><%= product.name %></h3></td>
+    </tr>
+    <tr> <td><strong>가격 :</strong> <span class="text-danger"><%= product.price %> 원</span></td></tr>
+    <tr> <td><strong>브랜드 :</strong> <%= product.brand %></td></tr>
+    <tr> <td><strong>공급업체 :</strong> <%= product.supplier %></td></tr>
+    <tr>
+        <td>
+            <% if (login) { %>
+                <a href="/purchase/detail/<%= product.prod_id %>">
+                    <button class="btn btn-outline-primary btn-sm" type="button">구매</button>
+                </a>
+                <form action="/cart/add_process" method="post" style="display : inline-block; margin-left: 5px;">
+                    <input type="hidden" value="<%= product.prod_id %>" name="prod_id">
+                    <button class="btn btn-outline-primary btn-sm" type="submit">장바구니</button>
+                </form>
+            <% } else { %>
+                <span class="text-muted small">※ 로그인한 고객만 구매 및 장바구니 이용이 가능합니다.</span>
+            <% } %>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,46 @@
+<script>
+    
+    function actionCheck(event)
+    {
+        // var value = event.target.value;
+        // var chk = document.getElementsByName('check');
+        // var tr = chk.parent[0];
+        // alert(tr.innerHTML);
+        var tempOfCheck = 0
+        $("input[name=check]:checked").each(function(){
+        // 체크박스가 table에 있으므로 체크박스가 속한 row의 4번째에 표시되는 qid 값을 가져옴.
+        var numOfCheck = document.getElementById('total');
+        tempOfCheck += 1;
+        numOfCheck.value = tempOfCheck;
+        });
+        if (tempOfCheck == 0){
+            var numOfCheck = document.getElementById('total');
+            numOfCheck.value = 0;
+        }
+    }
+
+
+</script>
+<table class="table table-bordered ">
+    <form action = "#" method="post">
+        <tr><th>구매선택</th><th>상품</th><th>상품명</th><th>단가</th><th>담은날</th><th>수량</th></tr>
+    
+    <tr  style="text-align: center; vertical-align: middle;">
+        <td><input type="checkbox" name="check"  value="" onClick="actionCheck(event)"></td>
+        <td><a href="#" style="text-decoration: none;"><img src="" style="width:100px;height:100px; "></a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="number" name="qty" value="1"  > </td> 
+    </tr>
+ 
+
+
+</table>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-outline-primary btn-sm" type="submit" >결재</button>
+    <input type="hidden" id="total" name="numOfCheck" value="0"> 
+    <button class="btn btn-outline-primary btn-sm" onclick="if(confirm('정말로 삭제하시겠습니까?')==false){ return false} else { form.action = '/purchase/cartdelete_process'; }">삭제</button>
+</form>
+<a href='#'><button class="btn btn-outline-primary btn-sm">상품 목록 돌아가기</button></a></div>
+ 

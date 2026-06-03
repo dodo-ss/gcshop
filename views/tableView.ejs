@@ -1,0 +1,50 @@
+<div class="container-fluid" style="margin-top: 20px; padding: 0 40px;">
+    <h2 class="mb-4" style="font-weight: bold;"><%= tName %> 자료 목록</h2>
+    
+    <table class="table table-bordered align-middle text-center" style="border: 1px solid #70a1ff;">
+        <thead>
+            <tr style="background-color: #ffffff;">
+                <th style="border: 1px solid #70a1ff; color: #000000; font-weight: bold; padding: 12px;">장바구니담긴날짜</th>
+                <th style="border: 1px solid #70a1ff; color: #000000; font-weight: bold; padding: 12px;">로그인아이디</th>
+                <th style="border: 1px solid #70a1ff; color: #000000; font-weight: bold; padding: 12px;">상품아이디</th>
+                
+                <th colspan="3" style="border: 1px solid #70a1ff; width: 240px;"></th> 
+            </tr>
+        </thead>
+        <tbody>
+            <% if (rows && rows.length > 0) { %>
+                <% rows.forEach(function(row) { %>
+                    <tr style="background-color: #ffffff;">
+                        <td style="border: 1px solid #70a1ff; padding: 12px; color: #333333;">
+                            <%= row.date %>
+                        </td>
+                        
+                        <td style="border: 1px solid #70a1ff; padding: 12px; color: #333333;">
+                            <%= row.loginid %>
+                        </td>
+                        
+                        <td style="border: 1px solid #70a1ff; padding: 12px; color: #333333;">
+                            <%= row.prod_id %>
+                        </td>
+
+                        <td style="border: 1px solid #70a1ff; padding: 12px; width: 80px;">
+                            <a href="#" class="text-decoration-none" style="color: #4a90e2;">생성</a>
+                        </td>
+                        <td style="border: 1px solid #70a1ff; padding: 12px; width: 80px;">
+                            <a href="#" class="text-decoration-none" style="color: #4a90e2;">수정</a>
+                        </td>
+                        <td style="border: 1px solid #70a1ff; padding: 12px; width: 80px;">
+                            <a href="#" class="text-decoration-none" style="color: #4a90e2;">삭제</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="6" style="padding: 20px; color: #999999;">
+                        테이블에 등록된 데이터가 없습니다. 먼저 MySQL에 데이터를 추가해 주세요.
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
